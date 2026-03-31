@@ -114,6 +114,10 @@ class MemoryChatSession:
     def flush(self):
         return api.flush(self.user_id, self.session_id)
 
+    def stats(self):
+        """返回当前用户的记忆统计信息，等价于 get_stats(user_id)。"""
+        return api.get_stats(self.user_id)
+
 
 def build_chat_messages(user_text, system_prompt="", memory_text="", extra_messages=None):
     # 将记忆上下文合并进 system prompt，而不是作为第二条 system 消息。
